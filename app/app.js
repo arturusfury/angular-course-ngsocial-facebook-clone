@@ -6,7 +6,5 @@ angular.module('ngSocial', [
   'ngSocial.facebook'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
   $routeProvider.otherwise({redirectTo: '/facebook'});
 }]);
