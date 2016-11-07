@@ -11,7 +11,7 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
 .config(function($facebookProvider) {
   $facebookProvider.setAppId('1811866962360825');
-  $facebookProvider.setPermissions('email', 'public_profile', 'user_posts', 'publish_actions', 'user_photos');
+  $facebookProvider.setPermissions('email, public_profile, user_posts, publish_actions, user_photos');
 })
 
 .run(function($rootScope) {
@@ -35,17 +35,24 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
   }
 
   $scope.logout = function() {
-    $facebook.logout().then(function(response) {
-      $scope.isLoggedin = false;
+    $facebook.logout().then(function() {
+      $scope.isLoggedIn = false;
     });
   }
 
+  $scope.postStatus = function() {
+    var body = this.body;
+
+    $facebook.api('/me/feed', 'POST', {message: body}).then(function(response) {
+      $scope.msg = 'Thanks for Posting';
+      refresh();
+    })
+  }
+
   function refresh() {
-    $facebook.api('/me?fields=name,id,first_name,last_name,email,gender,locale,link,posts').then(function(response) {
+    $facebook.api('/me?fields=name,id,first_name,last_name,email,gender,locale,link').then(function(response) {
       $scope.welcomeMsg = "Welcome " + response.name;
       $scope.userInfo = response;
-
-      console.log($scope.userInfo);
 
       $facebook.api('/me/picture').then(function (response) {
         $scope.picture = response.data.url;
@@ -57,12 +64,11 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
       $facebook.api('/me/posts').then(function(response) {
         $scope.wallPosts = response.data;
+        console.log($scope.wallPosts);
       });
     },
     function (err){
       $scope.welcomeMsg = "Please Login to Facebook";
     });
   }
-
-  refresh();
 }]);

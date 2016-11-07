@@ -26,14 +26,16 @@
   </div>
   <div class="col-md-8">
     <h3>Welcome to Facebook!</h3>
-    <form ng-show="isLoggedIn">
-      <div class="form-group">
-        <label for="">Status Update</label>
-        <textarea class="form_control"></textarea>
-        <button type="submit" class="btn btn-large btn-default">button</button>
-      </div>
+    <div ng-show="isLoggedIn">
+      <form ng-submit="postStatus()">
+        <div class="form-group">
+          <label for="">Status Update</label>
+          <textarea ng-model="body" class="form_control"></textarea>
+          <button type="submit" class="btn btn-large btn-default">Submit Post</button>
+        </div>
+      </form>
       <br><br>
-      <div ng-repeat="post in wallPosts">
+      <div ng-repeat="post in wallPosts" class="stbody">
         <div class="stimg">
           <img ng-src="{{picture}}" alt="" />
         </div>
@@ -43,6 +45,6 @@
         </div>
         <br /><br />
       </div>
-    </form>
+    </div>
   </div>
 </div>
