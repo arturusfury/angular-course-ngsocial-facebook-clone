@@ -15,49 +15,14 @@
   </nav>
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h4>Please Login</h4>
-        <button type="button" class="btn btn-large btn-block btn-primary">Login</button>
-        <br>
-        <div class="well" ng-show="userLoggedIn">
-          <h4>User Info:</h4>
-          <ul>
-            <li>ID: someId</li>
-            <li>First Name: {{user.first_name}}</li>
-            <li>Last Name: {{user.last_name}}</li>
-            <li>Email: {{user.email}}</li>
-            <li>Gender: {{user.gender}}</li>
-            <li>Locale: {{user.locale}}</li>
-          </ul>
-        </div>
-        <br>
-        <div class="well" ng-show="userLoggedIn">
-          <h4>Permissions:</h4>
-          <ul>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-8">
-        <h3>Welcome to Facebook!</h3>
-        <form ng-show="userLoggedIn">
-          <div class="form-group">
-            <label for="">Status Update</label>
-            <textarea class="form_control"></textarea>
-            <button type="submit" class="btn btn-large btn-default">button</button>
-          </div>
-        </form>
-        <div ng-view></div>
-      </div>
-    </div>
+    <div ng-view></div>
   </div>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/ng-facebook/ngFacebook.js"></script>
   <script src="app.js"></script>
   <script src="facebook/facebook.js"></script>
 </body>
