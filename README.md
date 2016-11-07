@@ -1,7 +1,5 @@
-(function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+# ngSocial - Facebook app - Angular Demo
+
+This repo is from a course on building multiple pages in Angular.  Here I used
+the angular-seed repo hosted here on github to create our framework then I
+built the page up using some basic bootstrap html and angular route knowledge.
